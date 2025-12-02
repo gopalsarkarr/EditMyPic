@@ -1,0 +1,2313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EditMyPic</title>
+    <meta name="description" content="Professional photo editing services with fast delivery. Choose from various editing styles and order directly via WhatsApp.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ===== CSS RESET & GLOBAL STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #4A6CF7;
+            --primary-dark: #3a56d4;
+            --secondary: #6C757D;
+            --accent: #FF6B9D;
+            --light: #F8F9FA;
+            --dark: #212529;
+            --gray: #6C757D;
+            --light-gray: #E9ECEF;
+            --success: #28A745;
+            --border-radius: 12px;
+            --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #fff;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        button, .btn {
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            transition: var(--transition);
+            border: none;
+            outline: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--gray);
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            padding: 0.9rem 1.8rem;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 12px rgba(74, 108, 247, 0.25);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(74, 108, 247, 0.35);
+        }
+
+        .btn-secondary {
+            background-color: white;
+            color: var(--primary);
+            padding: 0.9rem 1.8rem;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            border: 2px solid var(--primary);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--light);
+            transform: translateY(-2px);
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white;
+            padding: 0.9rem 1.8rem;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #1da851;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(37, 211, 102, 0.35);
+        }
+
+        .card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            background-color: var(--light-gray);
+            color: var(--dark);
+        }
+
+        .badge-primary {
+            background-color: rgba(74, 108, 247, 0.15);
+            color: var(--primary);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .stars {
+            color: #FFC107;
+            margin-bottom: 0.5rem;
+        }
+
+        /* ===== MOBILE-FIRST LAYOUT ===== */
+        /* ===== 1. NAVIGATION BAR ===== */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 1.5rem;
+        }
+
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            border-top: 1px solid var(--light-gray);
+        }
+
+        .nav-links.active {
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-bottom: 1rem;
+        }
+
+        .nav-links a {
+            display: block;
+            padding: 0.7rem 0;
+            font-weight: 500;
+            color: var(--dark);
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--dark);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* ===== 2. HERO SECTION ===== */
+        .hero {
+            padding: 4rem 0 5rem;
+            background: linear-gradient(135deg, #f5f7ff 0%, #f0f2ff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -30%;
+            width: 80%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(74, 108, 247, 0.1) 0%, rgba(74, 108, 247, 0) 70%);
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            color: var(--secondary);
+            max-width: 600px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .hero-image {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        /* ===== 3. CATEGORY FILTERS & SORTING ===== */
+        .filters-section {
+            background-color: var(--light);
+            padding: 2.5rem 0;
+        }
+
+        .filter-controls {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .categories {
+            display: flex;
+            gap: 0.7rem;
+            overflow-x: auto;
+            padding-bottom: 0.5rem;
+            scrollbar-width: thin;
+        }
+
+        .categories::-webkit-scrollbar {
+            height: 5px;
+        }
+
+        .categories::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .categories::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 10px;
+        }
+
+        .category-btn {
+            padding: 0.7rem 1.2rem;
+            border-radius: 30px;
+            background-color: white;
+            color: var(--dark);
+            font-weight: 500;
+            white-space: nowrap;
+            border: 1px solid var(--light-gray);
+        }
+
+        .category-btn.active {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .sort-container {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .sort-label {
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .sort-select {
+            padding: 0.7rem 1rem;
+            border-radius: var(--border-radius);
+            border: 1px solid var(--light-gray);
+            background-color: white;
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            font-weight: 500;
+            min-width: 180px;
+        }
+
+        /* ===== 4. GALLERY SECTION ===== */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .edit-card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .edit-card-image {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+        }
+
+        .edit-card-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .edit-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.8rem;
+        }
+
+        .edit-card-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .edit-card-price {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.3rem;
+        }
+
+        .edit-card-desc {
+            color: var(--secondary);
+            margin-bottom: 1.2rem;
+            flex-grow: 1;
+        }
+
+        .edit-card-footer {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin-top: auto;
+        }
+
+        .delivery-time {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--success);
+            font-size: 0.9rem;
+        }
+
+        .card-buttons {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .card-buttons .btn {
+            flex: 1;
+            padding: 0.8rem;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        /* ===== MODAL ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: white;
+            border-radius: var(--border-radius);
+            width: 100%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--dark);
+            cursor: pointer;
+            z-index: 10;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .modal-image-container {
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-image {
+            width: 100%;
+            border-radius: var(--border-radius);
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .modal-title {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-price {
+            font-size: 1.5rem;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .before-after-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .before-after-item {
+            flex: 1;
+        }
+
+        .before-after-label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .modal-desc {
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .modal-whatsapp-btn {
+            width: 100%;
+            justify-content: center;
+        }
+
+        /* ===== 5. HOW IT WORKS ===== */
+        .steps-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .step-card {
+            text-align: center;
+            padding: 2rem 1.5rem;
+        }
+
+        .step-icon {
+            width: 70px;
+            height: 70px;
+            background-color: rgba(74, 108, 247, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: var(--primary);
+            font-size: 1.8rem;
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            line-height: 30px;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .step-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+        }
+
+        /* ===== 6. WHY US SECTION ===== */
+        .features-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 2rem 1.5rem;
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(255, 107, 157, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: var(--accent);
+            font-size: 1.5rem;
+        }
+
+        /* ===== 7. BEFORE/AFTER SLIDER ===== */
+        .before-after {
+            background-color: var(--light);
+            border-radius: var(--border-radius);
+            padding: 3rem 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .before-after h2 {
+            margin-bottom: 1.5rem;
+        }
+
+        .slider-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+        }
+
+        .slider-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .slider-before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .slider-handle {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background-color: white;
+            cursor: col-resize;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slider-handle::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slider-handle::before {
+            content: '\f07e';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--primary);
+            position: absolute;
+            z-index: 2;
+        }
+
+        .slider-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        /* ===== 8. REVIEWS SECTION ===== */
+        .reviews-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .review-card {
+            padding: 1.8rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .review-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .review-info h4 {
+            margin-bottom: 0.3rem;
+        }
+
+        .review-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: var(--border-radius);
+            margin-top: 1.5rem;
+        }
+
+        /* ===== 9. ABOUT US ===== */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-image {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+        }
+
+        .about-image img {
+            height: 300px;
+            object-fit: cover;
+        }
+
+        /* ===== 10. PRIVACY POLICY ===== */
+        .privacy-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .privacy-points {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .privacy-point {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .privacy-icon {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-top: 0.2rem;
+        }
+
+        /* ===== 11. FAQ SECTION ===== */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .faq-question {
+            padding: 1.2rem 1.5rem;
+            background-color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .faq-question i {
+            transition: var(--transition);
+            color: var(--primary);
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background-color: white;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            max-height: 500px;
+        }
+
+        /* ===== 12. CONTACT SECTION ===== */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(74, 108, 247, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 0.9rem 1.2rem;
+            border-radius: var(--border-radius);
+            border: 1px solid var(--light-gray);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.1);
+        }
+
+        /* ===== FLOATING WHATSAPP BUTTON ===== */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            transition: var(--transition);
+        }
+
+        .floating-whatsapp:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+        }
+
+        /* ===== 13. FOOTER ===== */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo span {
+            color: var(--accent);
+        }
+
+        .footer-links h3 {
+            color: white;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links ul {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 0.3rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* ===== MEDIA QUERIES FOR TABLETS ===== */
+        @media (min-width: 600px) {
+            h1 {
+                font-size: 3rem;
+            }
+
+            h2 {
+                font-size: 2.3rem;
+            }
+
+            .hero-buttons {
+                flex-direction: row;
+                gap: 1.5rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .steps-container,
+            .features-container,
+            .reviews-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .card-buttons {
+                flex-direction: column;
+            }
+
+            .before-after-container {
+                flex-direction: row;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+
+        /* ==== OFFER PRICE STYLES (OLD PRICE + 99% OFF + NEW PRICE) ==== */
+    .price-box {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+             }
+
+    .old-price {
+    text-decoration: line-through;
+    color: var(--gray);
+    font-size: 0.9rem;
+}
+
+    .discount-badge {
+    background-color: rgba(40, 167, 69, 0.12);
+    color: var(--success);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.15rem 0.6rem;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+ }
+
+    .new-price {
+    font-size: 1.3rem;
+    color: var(--primary);
+    font-weight: 700;
+    margin-top: 0.25rem;
+}
+
+
+        /* ===== MEDIA QUERIES FOR DESKTOPS ===== */
+        @media (min-width: 1024px) {
+            .navbar {
+                padding: 1.2rem 0;
+            }
+
+            .hamburger {
+                display: none;
+            }
+
+            .nav-links {
+                display: flex;
+                position: static;
+                flex-direction: row;
+                width: auto;
+                background-color: transparent;
+                box-shadow: none;
+                padding: 0;
+                border-top: none;
+            }
+
+            .nav-links li {
+                margin-bottom: 0;
+                margin-left: 2rem;
+            }
+
+            .nav-links a {
+                padding: 0.5rem 0;
+                border-bottom: none;
+                font-size: 1rem;
+            }
+
+            .hero {
+                padding: 6rem 0;
+            }
+
+            .hero-content {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 4rem;
+                align-items: center;
+            }
+
+            .hero h1 {
+                font-size: 3.2rem;
+            }
+
+            .filter-controls {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .categories {
+                flex-wrap: wrap;
+                overflow-x: visible;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .steps-container {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .features-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .reviews-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .about-content {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .privacy-points {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== 1. NAVIGATION BAR ===== -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#home" class="logo">EditMy<span>Pic</span></a>
+                
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#categories">Categories</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#why-us">Why Us</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#reviews">Reviews</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#privacy">Privacy</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== 2. HERO SECTION ===== -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Turn Your Photos Into <span style="color: var(--primary);">Stunning Edits</span> <span style="color:#ff2ba7">for just ₹1</span></h1>
+                    <p>Professional photo editing service with fast delivery. Choose from 20+ editing styles and get your photos edited within 24-48 hours.</p>
+                    
+                    <div class="hero-buttons">
+                        <a href="#gallery" class="btn-primary">
+                            <i class="fas fa-brush"></i> Browse Editing Styles
+                        </a>
+                        <a href="https://wa.me/916289151342?text=Hi%20EditMyPic%2C%20I%20need%20help%20with%20photo%20editing" target="_blank" class="btn-secondary">
+                            <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1554080353-a576cf803bda?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Before and after photo editing examples">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 3. CATEGORY FILTERS + SORTING ===== -->
+    <section class="filters-section" id="categories">
+        <div class="container">
+            <h2>Editing Styles</h2>
+            <p class="section-subtitle">Browse our collection of professional photo editing styles. Filter by category or sort by price to find the perfect edit for your photos.</p>
+            
+            <div class="filter-controls">
+                <div class="categories" id="categoryFilters">
+                    <button class="category-btn active" data-category="all">All</button>
+                    <button class="category-btn" data-category="background">Background Change</button>
+                    <button class="category-btn" data-category="color">Gibli Style</button>   <!-- color  currection -->
+                    <button class="category-btn" data-category="wedding">Wedding / Couple</button>
+                    <button class="category-btn" data-category="birthday">Birthday Edit</button>
+                    <button class="category-btn" data-category="fantasy">Natural Edit</button>
+                    <button class="category-btn" data-category="social">Social Media DP</button>
+                    <button class="category-btn" data-category="poster">Poster / Thumbnail</button>
+                </div>
+                
+                <div class="sort-container">
+                    <label class="sort-label" for="sortSelect">Sort by:</label>
+                    <select class="sort-select" id="sortSelect">
+                        <option value="default">Default</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="popularity">Popularity</option>
+                        <option value="newest">Newest</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 4. GALLERY SECTION ===== -->
+    <section class="gallery-section" id="gallery">
+        <div class="container">
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Gallery cards will be generated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 5. HOW IT WORKS ===== -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <h2>How It Works</h2>
+            <p class="section-subtitle">Getting your photos edited is simple and fast. Just follow these 4 easy steps.</p>
+            
+            <div class="steps-container">
+                <div class="step-card card">
+                    <div class="step-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Choose Style</h3>
+                    <p>Browse our gallery and select your favorite editing style.</p>
+                </div>
+                
+                <div class="step-card card">
+                    <div class="step-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Order on WhatsApp</h3>
+                    <p>Click "Order on WhatsApp" and send us your photo with details.</p>
+                </div>
+                
+                <div class="step-card card">
+                    <div class="step-icon">
+                        <i class="fas fa-edit"></i>
+                    </div>
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">We Edit & Send Preview</h3>
+                    <p>Our editors work on your photo and send you a preview within 24 hours.</p>
+                </div>
+                
+                <div class="step-card card">
+                    <div class="step-icon">
+                        <i class="fas fa-download"></i>
+                    </div>
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">Confirm & Download</h3>
+                    <p>Review the edit, request changes if needed, then download the final version.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 6. WHY US SECTION ===== -->
+    <section class="why-us" id="why-us">
+        <div class="container">
+            <h2>Why Edit From Us?</h2>
+            <p class="section-subtitle">We deliver professional photo editing services with a focus on quality, speed, and customer satisfaction.</p>
+            
+            <div class="features-container">
+                <div class="feature-card card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>Professional Editors</h3>
+                    <p>Experienced editors with 5+ years in photo editing and retouching.</p>
+                </div>
+                
+                <div class="feature-card card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Fast Delivery</h3>
+                    <p>Get your edited photos within 24-48 hours, perfect for urgent needs.</p>
+                </div>
+                
+                <div class="feature-card card">
+                    <div class="feature-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3>High Quality</h3>
+                    <p>Premium editing suitable for social media, printing, and professional use.</p>
+                </div>
+                
+                <div class="feature-card card">
+                    <div class="feature-icon">
+                        <i class="fas fa-indian-rupee-sign"></i>
+                    </div>
+                    <h3>Affordable Rates</h3>
+                    <p>Budget-friendly pricing with special discounts for students and creators.</p>
+                </div>
+                
+                <div class="feature-card card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Secure & Private</h3>
+                    <p>Your photos are handled securely and never shared with third parties.</p>
+                </div>
+                
+                <div class="feature-card card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Friendly Support</h3>
+                    <p>Available on WhatsApp to answer questions and provide updates.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 7. BEFORE/AFTER SLIDER ===== -->
+    <section class="before-after-section">
+        <div class="container">
+            <h2>Before & After</h2>
+            <p class="section-subtitle">See the transformation with our interactive before/after slider.</p>
+            
+            <div class="before-after">
+                <div class="slider-container" id="sliderContainer">
+                    <img class="slider-image" src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="After editing">
+                    <div class="slider-before" id="sliderBefore">
+                        <img class="slider-image" src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80&brightness=0.7&contrast=0.8" alt="Before editing">
+                    </div>
+                    <div class="slider-handle" id="sliderHandle"></div>
+                </div>
+                <div class="slider-labels">
+                    <span>Before</span>
+                    <span>After</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 8. REVIEWS SECTION ===== -->
+    <section class="reviews-section" id="reviews">
+        <div class="container">
+            <h2>Customer Reviews</h2>
+            <p class="section-subtitle">See what our customers say about our photo editing services.</p>
+            
+            <div class="reviews-container">
+                <div class="review-card card">
+                    <div class="review-header">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah Johnson" class="review-avatar">
+                        <div class="review-info">
+                            <h4>Maya Kumari</h4>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p>"My wedding photos were edited beautifully! The soft glow effect was exactly what I wanted. Delivered in just 24 hours!"</p>
+                    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Wedding photo edit" class="review-image">
+                </div>
+                
+                <div class="review-card card">
+                    <div class="review-header">
+                        <img src="https://randomuser.me/api/portraits/men/54.jpg" alt="Mark Davis" class="review-avatar">
+                        <div class="review-info">
+                            <h4>Rajendra Das</h4>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p>"Needed a professional headshot for LinkedIn. The background change and color correction made me look amazing!"</p>
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Professional headshot" class="review-image">
+                </div>
+                
+                <div class="review-card card">
+                    <div class="review-header">
+                        <img src="https://randomuser.me/api/portraits/women/67.jpg" alt="Lisa Chen" class="review-avatar">
+                        <div class="review-info">
+                            <h4>Bipul Pal</h4>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p>"The fantasy edit for my daughter's birthday photo was magical! She loved it so much. Will definitely order again."</p>
+                    <img src="https://images.unsplash.com/photo-1511988617509-a57c8a288659?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Fantasy edit" class="review-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 9. ABOUT US SECTION ===== -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <h2>About Us</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>We're Passionate About Perfect Photos</h3>
+                    <p>EditMyPic was founded by a team of professional photo editors with over 10 years of experience in the creative industry. We understand how important your photos are - whether it's a cherished memory, a professional portfolio piece, or content for your social media.</p>
+                    <p>We're not just a service - we're your creative partners. Every photo is treated with care and attention to detail, ensuring you receive edits that exceed your expectations.</p>
+                    <a href="#contact" class="btn-primary" style="margin-top: 1.5rem;">
+                        <i class="fas fa-envelope"></i> Get In Touch
+                    </a>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Photo editor at work">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 10. PRIVACY POLICY ===== -->
+    <section class="privacy-section" id="privacy">
+        <div class="container">
+            <h2>Privacy Policy</h2>
+            <div class="privacy-content">
+                <p>We take your privacy seriously. Here's how we handle your photos and information:</p>
+                
+                <div class="privacy-points">
+                    <div class="privacy-point">
+                        <div class="privacy-icon">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <div>
+                            <h4>Secure Handling</h4>
+                            <p>Photos shared by customers are used only for editing purposes and are never shared with third parties.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="privacy-point">
+                        <div class="privacy-icon">
+                            <i class="fas fa-trash-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Data Retention</h4>
+                            <p>Edited files and original photos are kept secure and can be deleted upon request after delivery.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="privacy-point">
+                        <div class="privacy-icon">
+                            <i class="fas fa-user-shield"></i>
+                        </div>
+                        <div>
+                            <h4>Minimal Data Collection</h4>
+                            <p>We only collect necessary contact information via WhatsApp for communication about your order.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="privacy-point">
+                        <div class="privacy-icon">
+                            <i class="fas fa-eye-slash"></i>
+                        </div>
+                        <div>
+                            <h4>No Unauthorized Use</h4>
+                            <p>We will never use your photos for our marketing or posts without your explicit permission.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 11. FAQ SECTION ===== -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <p class="section-subtitle">Find answers to common questions about our photo editing service.</p>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How do I place an order?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Simply browse our editing styles, click "Order on WhatsApp" on your chosen style, and send us your photo with any specific instructions. We'll confirm your order and begin editing.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How long will editing take?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Standard delivery time is 24-48 hours. For urgent requests, we offer express service (12 hours) for an additional fee. We'll provide an estimated delivery time when you place your order.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Which format should I send my photo in?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We accept JPG, PNG, and RAW files. For best results, send the highest quality version available. For printing purposes, we recommend sending RAW files if possible.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Can I request changes after you send the edit?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! We offer one round of minor revisions for free. After receiving the preview, you can request adjustments. Major changes or completely different editing styles may require an additional fee.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do you offer refunds?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We offer refunds if we're unable to deliver the service as described. If you're not satisfied with the edit, we'll work with you to make it right. Refunds are not offered for completed work that matches the ordered style.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Will you use my photos for posts or ads?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No, we never use customer photos for marketing without explicit permission. Your photos remain private and are used only for editing. We may ask to use an edit as a sample in our gallery, but only with your consent.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 12. CONTACT SECTION ===== -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <p class="section-subtitle">Have questions or ready to order? Contact us via WhatsApp or use the form below.</p>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div>
+                            <h3>WhatsApp</h3>
+                            <p>+91 6289151342</p>
+                            <a href="https://wa.me/916289151342?text=Hi%20EditMyPic%2C%20I%20have%20a%20question%20about%20your%20services" target="_blank" class="btn-whatsapp" style="margin-top: 0.5rem; padding: 0.7rem 1.5rem;">
+                                <i class="fab fa-whatsapp"></i> Chat Now
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h3>Response Time</h3>
+                            <p>We typically respond within 1-2 hours during business hours (9 AM - 9 PM GMT).</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-question-circle"></i>
+                        </div>
+                        <div>
+                            <h3>Need Help?</h3>
+                            <p>Check our FAQ section for answers to common questions about ordering and delivery.</p>
+                            <a href="#faq" class="btn-secondary" style="margin-top: 0.5rem; padding: 0.7rem 1.5rem;">
+                                <i class="fas fa-question-circle"></i> View FAQ
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Send us a message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== MODAL FOR EDIT DETAILS ===== -->
+    <div class="modal" id="editModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <div class="modal-body" id="modalBody">
+                <!-- Modal content will be inserted by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== FLOATING WHATSAPP BUTTON ===== -->
+    <a href="https://wa.me/916289151342?text=Hi%20EditMyPic%2C%20I%20need%20help%20with%20photo%20editing" target="_blank" class="floating-whatsapp" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- ===== 13. FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">EditMy<span>Pic</span></div>
+                    <p>Professional photo editing services with fast delivery and premium quality.</p>
+                    
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/being_xgopal/" target="_blank" class="social-link" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.facebook.com/g0pal.sarkr" target="_blank" class="social-link" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://youtube.com/@banglargopal?si=sNXcdk9wYncunbCI" target="_blank" class="social-link" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Pinterest">
+                            <i class="fab fa-pinterest-p"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#categories">Categories</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#reviews">Reviews</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#gallery" data-category="background">Background Change</a></li>
+                        <li><a href="#gallery" data-category="color">Color Correction</a></li>
+                        <li><a href="#gallery" data-category="wedding">Wedding Editing</a></li>
+                        <li><a href="#gallery" data-category="fantasy">Fantasy Edits</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#privacy">Privacy Policy</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 EditMyPic. All rights reserved. | Professional Photo Editing Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ===== GLOBAL VARIABLES =====
+        let editingStyles = [
+            {
+                id: 1,
+                name: "Neon Fantasy Portrait",
+                category: "fantasy",
+                description: "Transform your portrait with glowing neon effects and vibrant colors. Perfect for social media profiles.",
+                price: 100,
+                popularity: 95,
+                isNew: false,
+                image: "Natural.jpg"
+            },
+            {
+                id: 2,
+                name: "Soft Wedding Glow",
+                category: "wedding",
+                description: "Ethereal editing with soft lighting and warm tones for your special day memories.",
+                price: 120,
+                popularity: 98,
+                isNew: true,
+                image: "lalsharee.jpg"
+            },
+            {
+                id: 3,
+                name: "Collage",
+                category: "background",
+                description: "Clean, professional background replacement with perfect lighting for LinkedIn or business profiles.",
+                price: 190,
+                popularity: 90,
+                isNew: false,
+                image: "college.jpg"
+            },
+            {
+                id: 4,
+                name: "Gibli Style",
+                category: "color",
+                description: "Make your photos into Gibli Style.",
+                price: 100,
+                popularity: 85,
+                isNew: false,
+                image: "gibli.jpg"
+            },
+            {
+                id: 5,
+                name: "Magica Edit",
+                category: "birthday",
+                description: "You can Add everything with your photo.",
+                price: 150,
+                popularity: 88,
+                isNew: true,
+                image: "ai.jpg"
+            },
+            {
+                id: 6,
+                name: "Social Media DP",
+                category: "social",
+                description: "Optimized editing for profile pictures with perfect framing and enhancement.",
+                price: 111,
+                popularity: 92,
+                isNew: false,
+                image: "gard.jpg"
+            },
+            {
+                id: 7,
+                name: "Blck and White",
+                category: "poster",
+                description: "Eye-catching thumbnail design with text overlay and professional color grading.",
+                price: 119,
+                popularity: 82,
+                isNew: false,
+                image: "black.jpg"
+            },
+            {
+                id: 8,
+                name: "Broken Mirror",
+                category: "wedding",
+                description: "Romantic editing with soft focus and dreamy atmosphere for couple photos.",
+                price: 69,
+                popularity: 91,
+                isNew: true,
+                image: "BrokenM.jpg"
+            },
+            {
+                id: 9,
+                name: "Ghibli Style Photo",
+                category: "color",
+                description: "Make your photo  into Hand-Drawn anime, Ghibli, Anime cel styles.",
+                price: 100,
+                popularity: 80,
+                isNew: false,
+                image: "ghibli.jpg"
+            }
+        ];
+
+        let activeCategory = "all";
+        let activeSort = "default";
+
+        // ===== DOM ELEMENTS =====
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        const categoryFilters = document.getElementById('categoryFilters');
+        const sortSelect = document.getElementById('sortSelect');
+        const galleryGrid = document.getElementById('galleryGrid');
+        const editModal = document.getElementById('editModal');
+        const modalClose = document.getElementById('modalClose');
+        const modalBody = document.getElementById('modalBody');
+        const sliderContainer = document.getElementById('sliderContainer');
+        const sliderHandle = document.getElementById('sliderHandle');
+        const sliderBefore = document.getElementById('sliderBefore');
+        const contactForm = document.getElementById('contactForm');
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        // ===== FUNCTIONS =====
+        
+        // Initialize the gallery
+        function initializeGallery() {
+            renderGallery();
+            
+            // Add event listeners to category buttons
+            document.querySelectorAll('.category-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    // Update active category
+                    document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    activeCategory = this.getAttribute('data-category');
+                    renderGallery();
+                });
+            });
+            
+            // Add event listener to sort select
+            sortSelect.addEventListener('change', function() {
+                activeSort = this.value;
+                renderGallery();
+            });
+            
+            // Add event listener to modal close button
+            modalClose.addEventListener('click', closeModal);
+            
+            // Close modal when clicking outside
+            editModal.addEventListener('click', function(e) {
+                if (e.target === editModal) {
+                    closeModal();
+                }
+            });
+        }
+        
+        // Render gallery based on active filters and sort
+        function renderGallery() {
+            // Filter by category
+            let filteredStyles = activeCategory === 'all' 
+                ? [...editingStyles] 
+                : editingStyles.filter(style => style.category === activeCategory);
+            
+            // Sort by selected option
+            filteredStyles = sortStyles(filteredStyles, activeSort);
+            
+            // Clear gallery
+            galleryGrid.innerHTML = '';
+            
+            // Render gallery items
+            filteredStyles.forEach(style => {
+                const card = document.createElement('div');
+                card.className = 'edit-card card';
+                card.innerHTML = `
+                    <img src="${style.image}" alt="${style.name}" class="edit-card-image" loading="lazy">
+                    <div class="edit-card-content">
+                        <div class="edit-card-header">
+    <div>
+        <h3 class="edit-card-title">${style.name}</h3>
+        <span class="badge badge-primary">${getCategoryLabel(style.category)}</span>
+    </div>
+    <div class="edit-card-price">
+        <div class="price-box">
+            <span class="old-price">₹${style.price}</span>
+            <span class="discount-badge">99% OFF</span>
+        </div>
+        <div class="new-price">₹${getDiscountPrice(style.price)}</div>
+    </div>
+    </div>
+
+                        <p class="edit-card-desc">${style.description}</p>
+                        <div class="edit-card-footer">
+                            <div class="delivery-time">
+                                <i class="fas fa-clock"></i>
+                                <span>Delivery time: 24–48 hours</span>
+                            </div>
+                            <div class="card-buttons">
+                                <button class="btn-secondary view-details-btn" data-id="${style.id}">
+                                    <i class="fas fa-search"></i> View Details
+                                </button>
+                                <a href="https://wa.me/916289151342?text=Hi%20EditMyPic%2C%20I%20liked%20this%20editing%20style%3A%20${encodeURIComponent(style.name)}.%20Please%20help%20me%20with%20the%20order.%20I%20want%20to%20send%20my%20photo." 
+                                   target="_blank" class="btn-whatsapp">
+                                    <i class="fab fa-whatsapp"></i> Order on WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                galleryGrid.appendChild(card);
+            });
+            
+            // Add event listeners to "View Details" buttons
+            document.querySelectorAll('.view-details-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const styleId = parseInt(this.getAttribute('data-id'));
+                    openModal(styleId);
+                });
+            });
+        }
+        
+        // Sort styles based on selected option
+        function sortStyles(styles, sortBy) {
+            const sortedStyles = [...styles];
+            
+            switch(sortBy) {
+                case 'price-low':
+                    return sortedStyles.sort((a, b) => a.price - b.price);
+                case 'price-high':
+                    return sortedStyles.sort((a, b) => b.price - a.price);
+                case 'popularity':
+                    return sortedStyles.sort((a, b) => b.popularity - a.popularity);
+                case 'newest':
+                    // Assuming newer items have higher IDs
+                    return sortedStyles.sort((a, b) => b.id - a.id);
+                default:
+                    return sortedStyles;
+            }
+
+        }
+        // 99% OFF দিলে নতুন দাম = 1% of original
+function getDiscountPrice(originalPrice) {
+    return (originalPrice * 0.01).toFixed(2); // 1% রেখে বাকি 99% অফ
+}
+
+        // Get category label from category key
+        function getCategoryLabel(categoryKey) {
+            const categoryMap = {
+                'background': 'Background Change',
+                'color': 'Color Correction',
+                'wedding': 'Wedding / Couple',
+                'birthday': 'Birthday Edit',
+                'fantasy': 'Fantasy / Creative',
+                'social': 'Social Media DP',
+                'poster': 'Poster / Thumbnail'
+            };
+            
+            return categoryMap[categoryKey] || categoryKey;
+        }
+        
+        // Open modal with edit details
+        function openModal(styleId) {
+            const style = editingStyles.find(s => s.id === styleId);
+            
+            if (!style) return;
+            
+            modalBody.innerHTML = `
+                <div class="modal-image-container">
+                    <img src="${style.image}" alt="${style.name}" class="modal-image">
+                </div>
+                <h2 class="modal-title">${style.name}</h2>
+<div class="modal-price">
+    <div class="price-box">
+        <span class="old-price">₹${style.price}</span>
+        <span class="discount-badge">99% OFF</span>
+    </div>
+    <div class="new-price">₹${getDiscountPrice(style.price)} per photo</div>
+</div>
+
+                
+                <div class="before-after-container">
+                    <div class="before-after-item">
+                        <div class="before-after-label">Before Editing</div>
+                        <p>Original photo with standard lighting and colors. May have imperfections, dull colors, or distracting backgrounds.</p>
+                    </div>
+                    <div class="before-after-item">
+                        <div class="before-after-label">After Editing</div>
+                        <p>${style.description} Professional retouching, color correction, and enhancement applied to achieve the desired style.</p>
+                    </div>
+                </div>
+                
+                <div class="modal-desc">
+                    <h3>Detailed Description</h3>
+                    <p>This editing style includes professional retouching, color grading, and enhancement techniques to transform your photo. Our editors pay attention to every detail to ensure the final result matches the style preview.</p>
+                    <p><strong>What's included:</strong> Color correction, exposure adjustment, professional retouching, and style-specific effects. You'll receive the edited photo in high resolution suitable for printing and digital use.</p>
+                    <p><strong>Delivery:</strong> We deliver within 24-48 hours after receiving your photo. You'll get a preview for approval before receiving the final version.</p>
+                </div>
+                
+                <a href="https://wa.me/916289151342?text=Hi%20EditMyPic%2C%20I%20liked%20this%20editing%20style%3A%20${encodeURIComponent(style.name)}.%20Please%20help%20me%20with%20the%20order.%20I%20want%20to%20send%20my%20photo." 
+                   target="_blank" class="btn-whatsapp modal-whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> Order "${style.name}" on WhatsApp
+                </a>
+            `;
+            
+            editModal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        }
+        
+        // Close modal
+        function closeModal() {
+            editModal.classList.remove('active');
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        }
+        
+        // Initialize before/after slider
+        function initializeSlider() {
+            let isDragging = false;
+            
+            sliderHandle.addEventListener('mousedown', startDrag);
+            sliderHandle.addEventListener('touchstart', startDrag);
+            
+            function startDrag(e) {
+                isDragging = true;
+                document.addEventListener('mousemove', onDrag);
+                document.addEventListener('touchmove', onDrag);
+                document.addEventListener('mouseup', stopDrag);
+                document.addEventListener('touchend', stopDrag);
+                e.preventDefault();
+            }
+            
+            function onDrag(e) {
+                if (!isDragging) return;
+                
+                let clientX;
+                if (e.type.includes('touch')) {
+                    clientX = e.touches[0].clientX;
+                } else {
+                    clientX = e.clientX;
+                }
+                
+                const containerRect = sliderContainer.getBoundingClientRect();
+                let newWidth = ((clientX - containerRect.left) / containerRect.width) * 100;
+                
+                // Constrain between 0 and 100
+                newWidth = Math.max(0, Math.min(newWidth, 100));
+                
+                sliderBefore.style.width = `${newWidth}%`;
+                sliderHandle.style.left = `${newWidth}%`;
+            }
+            
+            function stopDrag() {
+                isDragging = false;
+                document.removeEventListener('mousemove', onDrag);
+                document.removeEventListener('touchmove', onDrag);
+                document.removeEventListener('mouseup', stopDrag);
+                document.removeEventListener('touchend', stopDrag);
+            }
+        }
+        
+        // Initialize FAQ accordion
+        function initializeFAQ() {
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', () => {
+                    // Close all other items (for mobile)
+                    if (window.innerWidth < 600) {
+                        faqItems.forEach(otherItem => {
+                            if (otherItem !== item && otherItem.classList.contains('active')) {
+                                otherItem.classList.remove('active');
+                            }
+                        });
+                    }
+                    
+                    // Toggle current item
+                    item.classList.toggle('active');
+                });
+            });
+        }
+        
+        // Handle contact form submission
+        function initializeContactForm() {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form data
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const message = document.getElementById('message').value;
+                
+                // In a real application, you would send this data to a server
+                // For this demo, we'll just show an alert
+                alert(`Thank you, ${name}! Your message has been received. We'll respond to you at ${email} within 24 hours.`);
+                
+                // Reset form
+                contactForm.reset();
+            });
+        }
+        
+        // Smooth scroll for navigation links
+        function initializeSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    // Don't scroll if it's a category filter link in footer
+                    if (this.getAttribute('data-category')) {
+                        const category = this.getAttribute('data-category');
+                        document.querySelector(`.category-btn[data-category="${category}"]`).click();
+                        return;
+                    }
+                    
+                    const targetId = this.getAttribute('href');
+                    
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        e.preventDefault();
+                        
+                        // Close mobile menu if open
+                        if (navLinks.classList.contains('active')) {
+                            hamburger.classList.remove('active');
+                            navLinks.classList.remove('active');
+                        }
+                        
+                        // Scroll to target
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+
+        // ===== INITIALIZE EVERYTHING WHEN DOM LOADED =====
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize mobile menu
+            hamburger.addEventListener('click', function() {
+                this.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+            
+            // Initialize gallery
+            initializeGallery();
+            
+            // Initialize before/after slider
+            initializeSlider();
+            
+            // Initialize FAQ accordion
+            initializeFAQ();
+            
+            // Initialize contact form
+            initializeContactForm();
+            
+            // Initialize smooth scroll
+            initializeSmoothScroll();
+            
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!hamburger.contains(e.target) && !navLinks.contains(e.target) && navLinks.classList.contains('active')) {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                }
+            });
+            
+            // Add active class to nav links based on scroll position
+            window.addEventListener('scroll', function() {
+                const sections = document.querySelectorAll('section[id], #home');
+                const scrollPos = window.scrollY + 100;
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    const sectionId = section.getAttribute('id');
+                    
+                    if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                        document.querySelectorAll('.nav-links a').forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${sectionId}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            });
+            
+            // Lazy load images
+            if ('IntersectionObserver' in window) {
+                const imageObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            img.src = img.dataset.src;
+                            imageObserver.unobserve(img);
+                        }
+                    });
+                });
+                
+                document.querySelectorAll('img[data-src]').forEach(img => {
+                    imageObserver.observe(img);
+                });
+            }
+        });
+
+        // ===== KEYBOARD ACCESSIBILITY =====
+        document.addEventListener('keydown', function(e) {
+            // Close modal with Escape key
+            if (e.key === 'Escape' && editModal.classList.contains('active')) {
+                closeModal();
+            }
+            
+            // Close mobile menu with Escape key
+            if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
