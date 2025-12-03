@@ -221,7 +221,7 @@
         }
 
         /* ===== MOBILE-FIRST LAYOUT ===== */
-        /* ===== 1. NAVIGATION BAR ===== */
+        /* ===== 1. NAVIGATION BAR   paggin ===== */
         header {
             position: sticky;
             top: 0;
@@ -234,12 +234,12 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.2rem 1.5rem;
+            padding: 0.5rem 1rem;  
         }
 
         .logo {
             font-family: 'Poppins', sans-serif;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 700;
             color: var(--primary);
         }
@@ -1134,11 +1134,53 @@
     margin-top: 0.25rem;
 }
 
+/* ===== OFFER TIMER BAR ===== */
+.offer-timer-bar {
+    background-color: #111827;
+    color: #f9fafb;
+    font-size: 0.9rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.offer-timer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 0.4rem 0;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.offer-label {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+#offer-timer span {
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+}
+
+.offer-note {
+    opacity: 0.9;
+}
+
+/* Mobile e jeno ভেঙে গেলেও সুন্দর লাগে */
+@media (max-width: 600px) {
+    .offer-timer-inner {
+        flex-direction: column;
+        gap: 0.2rem;
+    }
+}
+
+
 
         /* ===== MEDIA QUERIES FOR DESKTOPS ===== */
         @media (min-width: 1024px) {
             .navbar {
-                padding: 1.2rem 0;
+                padding: 0.5rem 0;
             }
 
             .hamburger {
@@ -1254,6 +1296,23 @@
                 </ul>
             </nav>
         </div>
+
+
+
+            <!-- 🕒 OFFER TIMER BAR -->
+    <div class="offer-timer-bar">
+        <div class="container offer-timer-inner">
+            <span class="offer-label">Limited time offer</span>
+            <span id="offer-timer">
+                <span id="offer-days">00</span>d :
+                <span id="offer-hours">00</span>h :
+                <span id="offer-minutes">00</span>m :
+                <span id="offer-seconds">00</span>s
+            </span>
+            <span class="offer-note">All edits just ₹1 per photo</span>
+        </div>
+    </div>
+
     </header>
 
     <!-- ===== 2. HERO SECTION ===== -->
@@ -1262,7 +1321,7 @@
             <div class="hero-content">
                 <div class="hero-text">
                     <h1>Turn Your Photos Into <span style="color: var(--primary);">Stunning Edits</span> <span style="color:#ff2ba7">for just ₹1</span></h1>
-                    <p>Professional photo editing service with fast delivery. Choose from 20+ editing styles and get your photos edited within 24-48 hours.</p>
+                    <p> photo editing service with fast delivery. Choose from 20+ editing styles and get your photos edited within 24-48 hours.<span style="color: #ff0019;"> <br>(Turn on desktop mode for better experience)</span></p>
                     
                     <div class="hero-buttons">
                         <a href="#gallery" class="btn-primary">
@@ -1458,7 +1517,7 @@
             <div class="reviews-container">
                 <div class="review-card card">
                     <div class="review-header">
-                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah Johnson" class="review-avatar">
+                        <img src="customer-dp.jpg" alt="Sarah Johnson" class="review-avatar">
                         <div class="review-info">
                             <h4>Maya Kumari</h4>
                             <div class="stars">
@@ -1471,12 +1530,12 @@
                         </div>
                     </div>
                     <p>"My wedding photos were edited beautifully! The soft glow effect was exactly what I wanted. Delivered in just 24 hours!"</p>
-                    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Wedding photo edit" class="review-image">
+                    <!-- <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Wedding photo edit" class="review-image"> -->
                 </div>
                 
                 <div class="review-card card">
                     <div class="review-header">
-                        <img src="https://randomuser.me/api/portraits/men/54.jpg" alt="Mark Davis" class="review-avatar">
+                        <img src="customer-dp.jpg" alt="Mark Davis" class="review-avatar">
                         <div class="review-info">
                             <h4>Rajendra Das</h4>
                             <div class="stars">
@@ -1489,12 +1548,12 @@
                         </div>
                     </div>
                     <p>"Needed a professional headshot for LinkedIn. The background change and color correction made me look amazing!"</p>
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Professional headshot" class="review-image">
+                    <!-- <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Professional headshot" class="review-image"> -->
                 </div>
                 
                 <div class="review-card card">
                     <div class="review-header">
-                        <img src="https://randomuser.me/api/portraits/women/67.jpg" alt="Lisa Chen" class="review-avatar">
+                        <img src="customer-dp.jpg" alt="Lisa Chen" class="review-avatar">
                         <div class="review-info">
                             <h4>Bipul Pal</h4>
                             <div class="stars">
@@ -1507,7 +1566,7 @@
                         </div>
                     </div>
                     <p>"The fantasy edit for my daughter's birthday photo was magical! She loved it so much. Will definitely order again."</p>
-                    <img src="https://images.unsplash.com/photo-1511988617509-a57c8a288659?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Fantasy edit" class="review-image">
+                    <!-- <img src="https://images.unsplash.com/photo-1511988617509-a57c8a288659?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Fantasy edit" class="review-image"> -->
                 </div>
             </div>
         </div>
@@ -1808,9 +1867,9 @@
         let editingStyles = [
             {
                 id: 1,
-                name: "Neon Fantasy Portrait",
+                name: "Frame Effect A001",
                 category: "fantasy",
-                description: "Transform your portrait with glowing neon effects and vibrant colors. Perfect for social media profiles.",
+                description: "Turn your normal photo into a beautiful frame-style artwork. perfect for DP, gift, birthday and social media posts",
                 price: 100,
                 popularity: 95,
                 isNew: false,
@@ -1818,20 +1877,20 @@
             },
             {
                 id: 2,
-                name: "Soft Wedding Glow",
+                name: "Soft Wedding F002",
                 category: "wedding",
                 description: "Ethereal editing with soft lighting and warm tones for your special day memories.",
-                price: 120,
+                price: 100,
                 popularity: 98,
                 isNew: true,
                 image: "lalsharee.jpg"
             },
             {
                 id: 3,
-                name: "Collage",
+                name: "Asthetic G005",
                 category: "background",
-                description: "Clean, professional background replacement with perfect lighting for LinkedIn or business profiles.",
-                price: 190,
+                description: "Make your photo look aesthetic. Trending frame style Minimal vibe.",
+                price: 100,
                 popularity: 90,
                 isNew: false,
                 image: "background.jpg"
@@ -1848,20 +1907,20 @@
             },
             {
                 id: 5,
-                name: "Magica Edit",
+                name: "Magical Edit",
                 category: "birthday",
-                description: "You can Add everything with your photo.",
-                price: 150,
+                description: "Turn your photo into a magical world.I can add anything, create any backgrund. Fantasy,Aesthetic, Dreamy, Cinematic",
+                price: 100,
                 popularity: 88,
                 isNew: true,
                 image: "ai.jpg"
             },
             {
                 id: 6,
-                name: "Social Media DP",
+                name: "Asthetic G005",
                 category: "social",
-                description: "Optimized editing for profile pictures with perfect framing and enhancement.",
-                price: 111,
+                description: "Make your photo look aesthetic. Trending frame style Minimal vibe.",
+                price: 100,
                 popularity: 92,
                 isNew: false,
                 image: "gard.jpg"
@@ -1870,8 +1929,8 @@
                 id: 7,
                 name: "Blck and White",
                 category: "poster",
-                description: "Eye-catching thumbnail design with text overlay and professional color grading.",
-                price: 119,
+                description: "Trun your photo into a classic black & white  look.",
+                price: 100,
                 popularity: 82,
                 isNew: false,
                 image: "black.jpg"
@@ -1880,8 +1939,8 @@
                 id: 8,
                 name: "Broken Mirror",
                 category: "wedding",
-                description: "Romantic editing with soft focus and dreamy atmosphere for couple photos.",
-                price: 69,
+                description: "Trun your photo into a dramatic broken-mirror look.",
+                price: 100,
                 popularity: 91,
                 isNew: true,
                 image: "BrokenM.jpg"
@@ -1890,7 +1949,7 @@
                 id: 9,
                 name: "Ghibli Style Photo",
                 category: "color",
-                description: "Make your photo  into Hand-Drawn anime, Ghibli, Anime cel styles.",
+                description: "Trun your photo  into a sort and dreamy, Hand-Drawn anime, Ghibli, Anime cel styles.",
                 price: 100,
                 popularity: 80,
                 isNew: false,
@@ -2313,6 +2372,44 @@ function getDiscountPrice(originalPrice) {
                 navLinks.classList.remove('active');
             }
         });
+
+
+
+
+
+
+        // ==== OFFER END TIME SET KORO ====
+// Ei date/time change korle offer-er sesh time bodolbe
+// Format: new Date("YYYY-MM-DDTHH:MM:SS");
+const offerEndTime = new Date("2025-12-10T23:59:59");  // 🔁 ekhane nijer date dao
+
+function updateOfferTimer() {
+    const now = new Date().getTime();
+    const distance = offerEndTime.getTime() - now;
+
+    const timerEl = document.getElementById("offer-timer");
+    if (!timerEl) return;
+
+    if (distance <= 0) {
+        timerEl.innerHTML = "Offer ended";
+        return;
+    }
+
+    const days    = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours   = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("offer-days").textContent    = String(days).padStart(2, '0');
+    document.getElementById("offer-hours").textContent   = String(hours).padStart(2, '0');
+    document.getElementById("offer-minutes").textContent = String(minutes).padStart(2, '0');
+    document.getElementById("offer-seconds").textContent = String(seconds).padStart(2, '0');
+}
+
+// Timer shuru kore dao
+updateOfferTimer();
+setInterval(updateOfferTimer, 1000);
+
     </script>
 </body>
 </html>
