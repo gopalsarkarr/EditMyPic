@@ -1910,7 +1910,7 @@
                 name: "Magical Edit",
                 category: "birthday",
                 description: "Turn your photo into a magical world.I can add anything, create any backgrund. Fantasy,Aesthetic, Dreamy, Cinematic",
-                price: 100,
+                price: 150,
                 popularity: 88,
                 isNew: true,
                 image: "ai.jpg"
@@ -2038,7 +2038,7 @@
     <div class="edit-card-price">
         <div class="price-box">
             <span class="old-price">₹${style.price}</span>
-            <span class="discount-badge">99% OFF</span>
+            <span class="discount-badge">57% OFF</span>
         </div>
         <div class="new-price">₹${getDiscountPrice(style.price)}</div>
     </div>
@@ -2096,7 +2096,7 @@
         }
         // 99% OFF দিলে নতুন দাম = 1% of original
 function getDiscountPrice(originalPrice) {
-    return (originalPrice * 0.01).toFixed(2); // 1% রেখে বাকি 99% অফ
+    return (originalPrice * 0.43).toFixed(2); // 1% রেখে বাকি 99% অফ
 }
 
         // Get category label from category key
